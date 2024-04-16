@@ -1,6 +1,7 @@
 package com.hoangquoc.mydaisyhotel.model;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +17,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class Room {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

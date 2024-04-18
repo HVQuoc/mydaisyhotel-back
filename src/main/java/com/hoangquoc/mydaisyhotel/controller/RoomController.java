@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@RestController 
 @RequiredArgsConstructor
 @RequestMapping("/rooms")
 public class RoomController {
@@ -84,6 +84,7 @@ public class RoomController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/room/{roomId}")
     public ResponseEntity<Optional<RoomResponse>> getRoomById(@PathVariable Long roomId) {
         Optional<Room> theRoom = roomService.getById(roomId);
         return theRoom.map(room -> {

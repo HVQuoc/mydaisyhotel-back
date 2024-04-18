@@ -1,4 +1,4 @@
 package com.hoangquoc.mydaisyhotel.repository;
 
-public interface BookedRoomRepository {
+public interface BookingRepository {
 }

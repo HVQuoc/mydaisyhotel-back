@@ -5,9 +5,6 @@ import com.hoangquoc.mydaisyhotel.exception.ResourceNotFoundException;
 import com.hoangquoc.mydaisyhotel.model.Room;
 import com.hoangquoc.mydaisyhotel.repository.RoomRepository;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.processing.SQL;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +13,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,5 +83,10 @@ public class RoomService implements IRoomService {
     @Override
     public Optional<Room> getById(Long roomId) {
         return Optional.of(roomRepository.findById(roomId).get());
+    }
+
+    @Override
+    public List<Room> getAvailableRooms(LocalDate checkInDate, LocalDate checkOutDate, String roomType) {
+        return roomRepository.findAvailableRoomsByDatesAndType(checkInDate, checkOutDate, roomType);
     }
 }

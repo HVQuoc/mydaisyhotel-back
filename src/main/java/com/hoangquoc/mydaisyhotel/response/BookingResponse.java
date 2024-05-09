@@ -18,8 +18,8 @@ public class BookingResponse {
     private String guestFullName;
     private String guestEmail;
     private int totalNumOfGuest;
-    private int numOfChildren;
     private int numOfAdults;
+    private int numOfChildren;
     private String bookingConfirmationCode;
     private RoomResponse room;
 

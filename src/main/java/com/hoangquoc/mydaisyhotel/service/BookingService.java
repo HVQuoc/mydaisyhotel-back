@@ -1,6 +1,7 @@
 package com.hoangquoc.mydaisyhotel.service;
 
 import com.hoangquoc.mydaisyhotel.exception.InvalidBookingRequestException;
+import com.hoangquoc.mydaisyhotel.exception.ResourceNotFoundException;
 import com.hoangquoc.mydaisyhotel.model.BookedRoom;
 import com.hoangquoc.mydaisyhotel.model.Room;
 import com.hoangquoc.mydaisyhotel.repository.BookingRepository;
@@ -44,7 +45,8 @@ public class BookingService implements IBookingService {
 
     @Override
     public BookedRoom findBookingByConfirmationCode(String confirmationCode) {
-        return bookingRepository.findByBookingConfirmationCode(confirmationCode);
+        return bookingRepository.findByBookingConfirmationCode(confirmationCode)
+                .orElseThrow(() -> new ResourceNotFoundException("No booking with the confirmation code " + confirmationCode + " found"));
     }
 
     @Override

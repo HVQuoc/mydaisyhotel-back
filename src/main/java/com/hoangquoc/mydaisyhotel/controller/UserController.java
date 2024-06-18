@@ -21,7 +21,6 @@ public class UserController {
     @GetMapping("/all")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<User>> getUsers(){
-
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.FOUND);
     }
 

@@ -56,8 +56,10 @@ public class WebSecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/auth/**", "/rooms/**","/bookings/**").permitAll();
+                    auth.requestMatchers("/roles/all-roles").permitAll();
                     auth.requestMatchers("/roles/**").hasRole("ADMIN");
                     auth.requestMatchers("/welcome").permitAll();
+                    auth.anyRequest().authenticated();
                 });
 
         http.authenticationProvider(authenticationProvider());
